@@ -1,0 +1,18 @@
+name: 'require-pr-approvals-action'
+description: 'Requires at least 1 approvals on the pull request.'
+author: 'Open Government Products, Singapore'
+inputs:
+  github-token:
+    description: 'A GitHub token for API access. Defaults to {{ github.token }}.'
+    default: '${{ github.token }}'
+    required: false
+  is-strict-mode:
+    description: 'If yes, the action will only be able to run against a PR. If not, when the action runs against a non-PR, it will always set `status` as `success`'
+    default: 'false'
+    required: false
+outputs:
+  status:
+    description: 'Either `success` or `failure`'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
